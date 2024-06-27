@@ -17,7 +17,8 @@ class StaffsFactory extends Factory
     public function definition(): array
     {
         return [
-            "name"=>fake()->name()
+            "name"=>fake()->name(),
+            "user_id"=>\App\Models\User::factory(),
         ];
     }
 }
