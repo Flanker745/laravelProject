@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class registerController extends Controller
+{
+    public function create(){
+        return view('.auth.register');
+    }
+    public function store(){
+       $attrs =  request()->validate([
+            "first_name" =>"required",
+            "last_name" =>"required",
+            "email" =>"required|email",
+            "password" =>"required|confirmed"
+            ]);
+      $user =   User::create($attrs);
+        Auth::login($user);
+        return redirect("/");
+    }
+}
