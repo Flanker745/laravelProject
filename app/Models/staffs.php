@@ -12,4 +12,7 @@ class staffs extends Model
     {
         return $this->hasMany(job::class);
     }
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
 }

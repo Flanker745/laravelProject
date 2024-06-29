@@ -2,10 +2,20 @@
     <x-slot:heading>
             Create Job
         </x-slot:heading>
-        <form method="POST" class="space-y-3" action="/jobs">
+        <form method="POST" class="space-y-6" action="/jobs">
             @csrf
-            <input type="text" name="title" for="title" class="w-[70%] border border-gray-400 shadow rounded px-2 py-1 " placeholder="Job title">
-            <input type="text" name="salary" for="salary" class="w-[70%] border border-gray-400 shadow rounded px-2 py-1 " placeholder="Salary">
-            <button type="submit" class="block m-auto px-4 py-2 bg-blue-500 text-white rounded btn">Submit</button>
+            <x-form-input  type="text"  name="title" placeholder="title"/>
+            <x-form-error name="title"></x-form-error>
+            <x-form-input type="text" name="salary" placeholder="Salary"/>
+            <x-form-error name="salary"></x-form-error>
+            <x-form-button>Submit</x-form-button>
         </form>
     </x-layout>
+
+    {{-- @if($errors->any())
+                @foreach ($errors->all() as $err )
+                    <ul>
+                        <li class="text-red-500">{{$err}}</li>
+                    </ul>
+                @endforeach
+            @endif --}}
